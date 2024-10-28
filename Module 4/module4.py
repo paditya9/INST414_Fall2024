@@ -11,7 +11,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
-df = pd.read_excel("/content/Module1_Dataset.xlsx")
+df = pd.read_excel("Module1_Dataset.xlsx")
 df.dropna(inplace=True)
 
 df = df[['State', 'Value', 'Low CI', 'High CI']]
@@ -26,6 +26,7 @@ for k in inertia_range:
     kmeans.fit(df[['Value', 'Low CI', 'High CI']])
     inertia.append(kmeans.inertia_)
 
+# Plotting Elbow Method
 plt.figure(figsize=(8, 5))
 plt.plot(inertia_range, inertia, marker = 'o')
 plt.title('Elbow Method for Optimal k')
@@ -40,6 +41,7 @@ df['Cluster'] = kmeans.fit_predict(df[['Value', 'Low CI', 'High CI']])
 print("Clustered Data Sample:")
 print(df)
 
+# Plotting Low CI Graph
 plt.figure(figsize=(8, 5))
 for cluster in range(k_optimal):
     clustered_data = df[df['Cluster'] == cluster]
@@ -50,6 +52,7 @@ plt.legend()
 plt.title('Clusters Visualization')
 plt.show()
 
+# Plotting High CI Graph
 plt.figure(figsize=(8, 5))
 for cluster in range(k_optimal):
     clustered_data = df[df['Cluster'] == cluster]
