@@ -8,18 +8,6 @@ Original file is located at
 """
 
 import pandas as pd
-
-# Load dataset
-df = pd.read_excel("Module1_Dataset.xlsx")  # replace with your dataset's path
-
-# Check for missing values and handle them if any
-df.dropna(inplace=True)
-
-# Selecting relevant columns
-df = df[['State', 'Value', 'Low CI', 'High CI']]
-print(df)
-
-import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 
